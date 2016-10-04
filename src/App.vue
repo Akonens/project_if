@@ -15,14 +15,6 @@ export default {
     }
   }
 }
-submit () {
-  if(this.username == "suka") {
-    alert(fuck off)
-  }
-}
-
-
-
 </script>
 
 <style>
