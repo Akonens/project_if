@@ -21,7 +21,7 @@ export default {
   },
   methods: {
     authorize (username, password)  {
-      console.log (username)
+      console.log (username == "admin" && password == "admin123")
       if(username == "admin" && password == "admin123") {
         alert ("You are admin")
       }
