@@ -1,12 +1,21 @@
 <template>
-  <input v-model="user.name">
-  <input type="password" v-model="user.pass">
+  <div class="color" v-if="user.isAdmin">
+    Es esmu admins
+    <strong>{{user.name}}</strong>
+    <button @click="logout()">Logout</button>
+  </div>
+  <div v-if="!user.isAdmin">
+    Es esmu parasts lietotajs
 
-  <button @click="authorize(user.name, user.pass)">Log In</button>
+    <input v-model="user.name">
+    <input type="password" v-model="user.pass">
+
+    <button @click="authorize(user.name, user.pass)">Log In</button>
+  </div>
+
+
 
   <pre>{{ user | json }}</pre>
-    {{ user | json }}
-  </pre>
 </template>
 
 <script>
@@ -15,20 +24,29 @@ export default {
     return {
       user: {
         name: "",
-        pass: ""
-      }
+        pass: "",
+        isAdmin: false,
+      },
     }
   },
   methods: {
     authorize (username, password)  {
-      console.log (username == "admin" && password == "admin123")
-      if(username == "admin" && password == "admin123") {
-        alert ("You are admin")
+      if(username == "admin" && password == "z") {
+        this.user.isAdmin = true
+      } else {
+        this.user.pass = ""
       }
+    },
+    logout () {
+      this.user.isAdmin = false
     }
   }
 }
 </script>
 
 <style>
+.color {
+
+}
+
 </style>
